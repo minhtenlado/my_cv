@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Đặc Biệt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            min-height: 100vh; /* Giữ nguyên chiều cao tối thiểu */
+            overflow-y: auto; /* Đảm bảo cuộn dọc */
+            background: #0a0a0a00; /* Background color */
+            position: relative; /* Position for absolute elements */
+            display: flex; /* Center content vertically */
+            flex-direction: column; /* Thay đổi để cho phép cuộn */
+            justify-content: flex-start; /* Bắt đầu từ trên cùng */
+            align-items: center; /* Center content horizontally */
+            transition: background 0.99s ease; /* Smooth background transition */
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure video is behind other content */
+        }
+
+        .home-page, .card-page, .contact-page {
+            width: 100%; /* Đảm bảo các trang chiếm toàn bộ chiều rộng */
+            padding: 20px; /* Thêm padding để tạo khoảng cách */
+            box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+            min-height: 100vh; /* Đặt chiều cao tối thiểu cho mỗi trang */
+        }
+
+        .home-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            z-index: 1; /* Ensure content is above the video */
+            text-align: center; /* Center text */
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade in effect */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 4em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px #ff0073;
+            animation: colorChange 3s infinite; /* Thêm hiệu ứng đổi màu */
+        }
+
+        @keyframes colorChange {
+            0% { color: #47ff4d; }
+            25% { color: #6bfaff; }
+            50% { color: #8e9bff; }
+            75% { color: #e047ff; }
+            100% { color: #ff6b6b; }
+        }
+
+        .start-btn {
+            padding: 15px 40px;
+            font-size: 1.5em;
+            background: #ff0073;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px; /* Add margin for spacing */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff0073, 0 0 30px rgba(255, 0, 115, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .image-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center; /* Center the image */
+            align-items: center; /* Center vertically */
+        }
+
+        .image-container img {
+            max-width: 90%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            transition: transform 0.3s; /* Smooth scaling effect */
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        .card-page {
+            display: none; /* Hidden by default */
+            padding: 20px; /* Add padding for content */
+            z-index: 1; /* Ensure content is above the video */
+        }
+
+        .valentine-card {
+            background: white;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center; /* Center text in card */
+            transition: transform 0.3s; /* Smooth scaling effect */
+        }
+
+        .valentine-card:hover {
+            transform: scale(1.02); /* Scale up on hover */
+        }
+
+        .heart {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            color: #ff4757;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .content {
+            text-align: justify; /* Căn lề justify cho nội dung */
+        }
+
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5em;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .highlight {
+            color: #ff4757;
+            font-weight: 600;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-style: italic;
+            color: #ff6b6b;
+            font-size: 1.2em;
+            text-align: right;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5em; /* Adjust title size for smaller screens */
+            }
+
+            .valentine-card {
+                padding: 25px; /* Adjust padding for smaller screens */
+            }
+
+            h1 {
+                font-size: 2em; /* Adjust heading size for smaller screens */
+            }
+        }
+
+        /* Styles for heart animation */
+        html, body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background: #000;
+        }
+
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Styles for Back to Home button */
+        .back-btn {
+            padding: 10px 30px;
+            font-size: 1.2em;
+            background: #ff4757; /* Color for the button */
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px; /* Add margin for spacing */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            background: #ff6b6b; /* Change color on hover */
+            box-shadow: 0 0 20px #ff4757, 0 0 30px rgba(255, 0, 115, 0.5); /* Enhanced shadow on hover */
+        }
+
+        /* Styles for contact page */
+        .contact-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white; /* Màu chữ mặc định */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            width: 60px; /* Tăng kích thước biểu tượng TikTok */
+            height: 60px; /* Tăng kích thước biểu tượng TikTok */
+            margin: 0 30px; /* Spacing between icons */
+            transition: transform 0.3s; /* Smooth scaling effect */
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .info-btn {
+            padding: 10px 30px; /* Thay đổi padding để giống với nút Trang Chủ */
+            font-size: 1.2em; /* Kích thước chữ */
+            background: #ff4757; /* Màu nền cho nút */
+            border: none; /* Không có viền */
+            border-radius: 25px; /* Bo tròn các góc */
+            color: white; /* Màu chữ */
+            cursor: pointer; /* Con trỏ chuột khi di chuột qua */
+            transition: all 0.3s ease; /* Hiệu ứng chuyển tiếp */
+            margin-top: 20px; /* Khoảng cách trên nút */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thêm bóng cho nút */
+        }
+
+        .info-btn:hover {
+            transform: scale(1.05); /* Phóng to khi di chuột qua */
+            background: #ff6b6b; /* Thay đổi màu nền khi hover */
+            box-shadow: 0 0 20px #ff4757, 0 0 30px rgba(255, 0, 115, 0.5); /* Bóng nâng cao khi hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video class="background-video" autoplay muted loop>
+        <source src="media/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Trang chủ -->
+    <div class="home-page" id="homePage">
+        <h1 class="title">Happy Valentine's Day</h1>
+        <button class="start-btn" onclick="showCard()">Mở Thư Tình ❤️</button>
+    </div>
+
+    <!-- Trang card -->
+    <div class="card-page" id="cardPage">
+        <div class="valentine-card">
+            <div class="heart">❤️</div>
+            <div class="content">
+                <h1>Happy Valentine's Day!</h1>
+                <p>Gửi <span class="highlight">Vợ</span> yêu dấu của anh💌,</p>
+                <p>Hôm nay là Valentine, dù hai đứa cách xa nhau hàng nghìn cây số, nhưng trái tim anh vẫn luôn đập cùng nhịp với em. Anh tin rằng, yêu thương không cần phải ở bên, mà là khi ta luôn hướng về nhau dù bất kỳ nơi đâu. Mỗi tin nhắn em gửi, mỗi cuộc gọi nửa đêm, hay những món quà nhỏ gửi qua đường bưu điện… đều là động lực để anh thêm mạnh mẽ vượt qua thử thách của khoảng cách.</p>
+                <p>Anh nhớ những lúc chúng ta cùng trò chuyện với nhau qua màn hình điện thoại, nhớ nụ cười em rạng rỡ dù chỉ qua những bức ảnh. Em là người dạy anh rằng, tình yêu đích thực không cần chạm tay, mà là sự đồng điệu của hai tâm hồn. Dù không thể ôm em thật chặt ngày hôm nay, nhưng anh vẫn cảm nhận được hơi ấm của em qua từng lời yêu thương.</p>
+                <p>Valentine này, anh chúc chúng mình một ngày lễ tình yêu ấm áp, ngọt ngào dù không có anh bên cạnh. Anh yêu em nhiều hơn mọi khoảng cách trên đời này. ❤️</p>
+                <p class="signature">Phan Huỳnh Văn Đô🌟💌</p>
+                <button class="back-btn" onclick="goBackHome()">Trang Chủ</button>
+                <button class="info-btn" onclick="showContactPage()">Tiếp Tục</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trang liên hệ -->
+    <div class="contact-page" id="contactPage" style="display: none;">
+        <div class="home-page">
+            <h1 class="title">Liên hệ người thiết kế trang web</h1>
+            <div class="social-links">
+                <a href="mailto:phanhuynhvando@gmail.com" target="_blank">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/11/Gmail-Logo.png" alt="Gmail" class="social-icon">
+                </a>
+                <a href="https://www.facebook.com/04.invisible.IT" target="_blank">
+                    <img src="https://1.bp.blogspot.com/-S8HTBQqmfcs/XN0ACIRD9PI/AAAAAAAAAlo/FLhccuLdMfIFLhocRjWqsr9cVGdTN_8sgCPcBGAYYCw/s1600/f_logo_RGB-Blue_1024.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/_invisible.04/" target="_blank">
+                    <img src="https://clipart.info/images/ccovers/1516920567instagram-png-logo-transparent.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@_invisible.04" target="_blank">
+                    <img src="https://th.bing.com/th/id/R.86888d01a32c8e8d7f15c3abb8fd7d13?rik=fHBGUk4CsjW64A&pid=ImgRaw&r=0" alt="TikTok" class="social-icon",>
+                </a>
+            </div>
+            <button class="back-btn" onclick="goBackHome()">Quay lại</button>
+        </div>
+    </div>
+
+    <canvas id="pinkboard"></canvas>
+
+    <script>
+        /* Particle settings */
+        var settings = {
+            particles: {
+                length:   500, // maximum amount of particles
+                duration:   2, // particle duration in sec
+                velocity: 100, // particle velocity in pixels/sec
+                effect: -0.75, // play with this for a nice effect
+                size:      30, // particle size in pixels
+            },
+        };
+
+        /* RequestAnimationFrame polyfill */
+        (function() {
+            var b = 0;
+            var c = ["ms", "moz", "webkit", "o"];
+            for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) {
+                window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"];
+                window.cancelAnimationFrame = window[c[a] + "CancelAnimationFrame"] || window[c[a] + "CancelRequestAnimationFrame"];
+            }
+            if (!window.requestAnimationFrame) {
+                window.requestAnimationFrame = function(h, e) {
+                    var d = new Date().getTime();
+                    var f = Math.max(0, 16 - (d - b));
+                    var g = window.setTimeout(function() { h(d + f); }, f);
+                    b = d + f;
+                    return g;
+                };
+            }
+            if (!window.cancelAnimationFrame) {
+                window.cancelAnimationFrame = function(d) { clearTimeout(d); };
+            }
+        })();
+
+        /* Point class */
+        var Point = (function() {
+            function Point(x, y) {
+                this.x = (typeof x !== 'undefined') ? x : 0;
+                this.y = (typeof y !== 'undefined') ? y : 0;
+            }
+            Point.prototype.clone = function() {
+                return new Point(this.x, this.y);
+            };
+            Point.prototype.length = function(length) {
+                if (typeof length == 'undefined') return Math.sqrt(this.x * this.x + this.y * this.y);
+                this.normalize();
+                this.x *= length;
+                this.y *= length;
+                return this;
+            };
+            Point.prototype.normalize = function() {
+                var length = this.length();
+                this.x /= length;
+                this.y /= length;
+                return this;
+            };
+            return Point;
+        })();
+
+        /* Particle class */
+        var Particle = (function() {
+            function Particle() {
+                this.position = new Point();
+                this.velocity = new Point();
+                this.acceleration = new Point();
+                this.age = 0;
+            }
+            Particle.prototype.initialize = function(x, y, dx, dy) {
+                this.position.x = x;
+                this.position.y = y;
+                this.velocity.x = dx;
+                this.velocity.y = dy;
+                this.acceleration.x = dx * settings.particles.effect;
+                this.acceleration.y = dy * settings.particles.effect;
+                this.age = 0;
+            };
+            Particle.prototype.update = function(deltaTime) {
+                this.position.x += this.velocity.x * deltaTime;
+                this.position.y += this.velocity.y * deltaTime;
+                this.velocity.x += this.acceleration.x * deltaTime;
+                this.velocity.y += this.acceleration.y * deltaTime;
+                this.age += deltaTime;
+            };
+            Particle.prototype.draw = function(context, image) {
+                function ease(t) {
+                    return (--t) * t * t + 1;
+                }
+                var size = image.width * ease(this.age / settings.particles.duration);
+                context.globalAlpha = 1 - this.age / settings.particles.duration;
+                context.drawImage(image, this.position.x - size / 2, this.position.y - size / 2, size, size);
+            };
+            return Particle;
+        })();
+
+        /* ParticlePool class */
+        var ParticlePool = (function() {
+            var particles, firstActive = 0, firstFree = 0, duration = settings.particles.duration;
+
+            function ParticlePool(length) {
+                particles = new Array(length);
+                for (var i = 0; i < particles.length; i++) particles[i] = new Particle();
+            }
+            ParticlePool.prototype.add = function(x, y, dx, dy) {
+                particles[firstFree].initialize(x, y, dx, dy);
+                firstFree++;
+                if (firstFree == particles.length) firstFree = 0;
+                if (firstActive == firstFree) firstActive++;
+                if (firstActive == particles.length) firstActive = 0;
+            };
+            ParticlePool.prototype.update = function(deltaTime) {
+                var i;
+                if (firstActive < firstFree) {
+                    for (i = firstActive; i < firstFree; i++) particles[i].update(deltaTime);
+                }
+                if (firstFree < firstActive) {
+                    for (i = firstActive; i < particles.length; i++) particles[i].update(deltaTime);
+                    for (i = 0; i < firstFree; i++) particles[i].update(deltaTime);
+                }
+                while (particles[firstActive].age >= duration && firstActive != firstFree) {
+                    firstActive++;
+                    if (firstActive == particles.length) firstActive = 0;
+                }
+            };
+            ParticlePool.prototype.draw = function(context, image) {
+                if (firstActive < firstFree) {
+                    for (i = firstActive; i < firstFree; i++) particles[i].draw(context, image);
+                }
+                if (firstFree < firstActive) {
+                    for (i = firstActive; i < particles.length; i++) particles[i].draw(context, image);
+                    for (i = 0; i < firstFree; i++) particles[i].draw(context, image);
+                }
+            };
+            return ParticlePool;
+        })();
+
+        /* Putting it all together */
+        (function(canvas) {
+            var context = canvas.getContext('2d'),
+                particles = new ParticlePool(settings.particles.length),
+                particleRate = settings.particles.length / settings.particles.duration, // particles/sec
+                time;
+
+            function pointOnHeart(t) {
+                return new Point(
+                    160 * Math.pow(Math.sin(t), 3),
+                    130 * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t) + 25
+                );
+            }
+
+            var image = (function() {
+                var canvas = document.createElement('canvas'),
+                    context = canvas.getContext('2d');
+                canvas.width = settings.particles.size;
+                canvas.height = settings.particles.size;
+                function to(t) {
+                    var point = pointOnHeart(t);
+                    point.x = settings.particles.size / 2 + point.x * settings.particles.size / 350;
+                    point.y = settings.particles.size / 2 - point.y * settings.particles.size / 350;
+                    return point;
+                }
+                context.beginPath();
+                var t = -Math.PI;
+                var point = to(t);
+                context.moveTo(point.x, point.y);
+                while (t < Math.PI) {
+                    t += 0.01; // baby steps!
+                    point = to(t);
+                    context.lineTo(point.x, point.y);
+                }
+                context.closePath();
+                context.fillStyle = '#ea80b0';
+                context.fill();
+                var image = new Image();
+                image.src = canvas.toDataURL();
+                return image;
+            })();
+
+            function render() {
+                requestAnimationFrame(render);
+                var newTime = new Date().getTime() / 1000,
+                    deltaTime = newTime - (time || newTime);
+                time = newTime;
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                var amount = particleRate * deltaTime;
+                for (var i = 0; i < amount; i++) {
+                    var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
+                    var dir = pos.clone().length(settings.particles.velocity);
+                    particles.add(canvas.width / 2 + pos.x, canvas.height / 2 - pos.y, dir.x, -dir.y);
+                }
+                particles.update(deltaTime);
+                particles.draw(context, image);
+            }
+
+            function onResize() {
+                canvas.width = canvas.clientWidth;
+                canvas.height = canvas.clientHeight;
+            }
+
+            window.onresize = onResize;
+
+            setTimeout(function() {
+                onResize();
+                render();
+            }, 10);
+        })(document.getElementById('pinkboard'));
+
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + '%';
+            firework.style.animationDuration = (Math.random() * 1 + 0.5) + 's';
+            document.getElementById('homePage').appendChild(firework);
+
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        setInterval(createFirework, 100);
+
+        function showCard() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('cardPage').style.display = 'block';
+            document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #ff8e8e)';
+        }
+
+        function goBackHome() {
+            document.getElementById('cardPage').style.display = 'none';
+            document.getElementById('homePage').style.display = 'flex';
+            document.body.style.background = '#0a0a0a'; // Reset background color
+        }
+
+        function showContactPage() {
+            document.getElementById('cardPage').style.display = 'none';
+            document.getElementById('contactPage').style.display = 'block';
+        }
+
+        const btn = document.querySelector('.start-btn');
+        btn.addEventListener('mousedown', () => {
+            btn.style.transform = 'scale(0.95)';
+        });
+        btn.addEventListener('mouseup', () => {
+            btn.style.transform = 'scale(1.1)';
+        });
+    </script>
+</body>
+</html>
