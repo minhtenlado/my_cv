@@ -153,22 +153,22 @@
     </div>
 
     <script>
-        // Lưu trữ ngôn ngữ hiện tại
+
         let currentLanguage = 'vi';
 
-        // Hàm thay đổi ngôn ngữ
+
         function changeLanguage(language) {
-            // Cập nhật ngôn ngữ hiện tại
+   
             currentLanguage = language;
             
-            // Cập nhật trạng thái nút
+
             document.getElementById('en-btn').classList.toggle('active', language === 'en');
             document.getElementById('vi-btn').classList.toggle('active', language === 'vi');
             
-            // Lấy tất cả các phần tử có class "lang"
+
             const elements = document.querySelectorAll('.lang');
             
-            // Cập nhật nội dung cho từng phần tử
+
             elements.forEach(element => {
                 const text = element.getAttribute(`data-${language}`);
                 if (text) {
@@ -182,18 +182,17 @@
             });
         }
 
-        // Hiệu ứng xuất hiện dần (staggered animation) cho các phần tử
         document.addEventListener('DOMContentLoaded', function() {
-            // Khởi tạo với ngôn ngữ mặc định (tiếng Việt)
+
             changeLanguage('vi');
             
-            // Lấy các phần tử cần thêm hiệu ứng
+
             const sidebarSections = document.querySelectorAll('.sidebar-section');
             const mainSections = document.querySelectorAll('.main-section');
             const experienceItems = document.querySelectorAll('.experience-item');
             const socialLinks = document.querySelectorAll('.social-link');
             
-            // Hàm thêm hiệu ứng xuất hiện dần cho một danh sách phần tử
+
             function animateElements(elements, delay = 0.1, baseDelay = 0.1) {
                 elements.forEach((element, index) => {
                     element.style.opacity = '0';
@@ -206,21 +205,21 @@
                 });
             }
             
-            // Thêm hiệu ứng với độ trễ khác nhau
+
             setTimeout(() => animateElements(sidebarSections, 0.15, 0.1), 300);
             setTimeout(() => animateElements(mainSections, 0.2, 0.3), 400);
             setTimeout(() => animateElements(experienceItems, 0.1, 0.5), 600);
             setTimeout(() => animateElements(socialLinks, 0.1, 0.7), 800);
         });
 
-        // Hiệu ứng hover cho phần tử khi di chuột qua
+
         document.addEventListener('mouseover', function(e) {
-            // Tìm phần tử cha gần nhất có class tương ứng
+
             const experienceItem = e.target.closest('.experience-item');
             const sidebarSection = e.target.closest('.sidebar-section');
             const contactItem = e.target.closest('.contact-item');
             
-            // Thêm hiệu ứng nếu di chuột vào các phần tử tương ứng
+
             if (experienceItem) {
                 const siblings = Array.from(experienceItem.parentNode.children)
                     .filter(item => item !== experienceItem && item.classList.contains('experience-item'));
@@ -230,7 +229,7 @@
                 });
             }
             
-            // Trả lại trạng thái bình thường khi di chuột ra
+
             document.addEventListener('mouseout', function(e) {
                 const experienceItems = document.querySelectorAll('.experience-item');
                 experienceItems.forEach(item => {
