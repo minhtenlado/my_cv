@@ -1,243 +1,1075 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phan Huỳnh Văn Đô - CV</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phan Huỳnh Văn Đô — IoT & AI Engineer</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0d1b2a;
+            --navy2: #1a2d42;
+            --teal: #2ec4b6;
+            --teal-lt: #3dddd0;
+            --cream: #f8f5f0;
+            --warm: #ede9e3;
+            --text: #1e2d3d;
+            --muted: #6b7a8d;
+            --border: #d9d3cb;
+            --white: #ffffff;
+        }
+
+        html {
+            font-size: 15px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── LANGUAGE SWITCHER ── */
+        .lang-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 28px;
+            background: rgba(248, 245, 240, .92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lang-bar button {
+            padding: 5px 16px;
+            border-radius: 20px;
+            border: 1.5px solid var(--border);
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--muted);
+            transition: all .2s;
+        }
+
+        .lang-bar button.active,
+        .lang-bar button:hover {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        /* ── LAYOUT ── */
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 64px 24px 64px;
+        }
+
+        /* ── HERO HEADER ── */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 40px 44px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(46, 196, 182, .25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 120px;
+            width: 320px;
+            height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(46, 196, 182, .1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .avatar-wrap {
+            flex-shrink: 0;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--teal);
+            overflow: hidden;
+            box-shadow: 0 0 0 6px rgba(46, 196, 182, .15);
+        }
+
+        .avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--navy2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: .5px;
+            line-height: 1.1;
+        }
+
+        .hero-title {
+            margin-top: 6px;
+            font-size: .9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        .hero-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .hero-contacts a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .75);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .hero-contacts a:hover {
+            color: var(--teal);
+        }
+
+        .hero-contacts svg {
+            flex-shrink: 0;
+        }
+
+        /* ── TWO-COLUMN BODY ── */
+        .body-grid {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* ── CARD (shared) ── */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 28px 24px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-label {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid var(--warm);
+        }
+
+        /* ── PROFILE ── */
+        .profile-text {
+            font-size: .88rem;
+            line-height: 1.75;
+            color: var(--text);
+            font-weight: 300;
+        }
+
+        /* ── SIDEBAR ITEMS ── */
+        .skill-group {
+            margin-bottom: 14px;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-group-label {
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: .5px;
+            margin-bottom: 6px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 500;
+            background: var(--warm);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .tag.accent {
+            background: rgba(46, 196, 182, .12);
+            border-color: rgba(46, 196, 182, .3);
+            color: #1a7870;
+        }
+
+        /* education */
+        .edu-school {
+            font-weight: 600;
+            font-size: .88rem;
+            color: var(--navy);
+        }
+
+        .edu-major {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .edu-year {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .5px;
+            color: var(--white);
+            background: var(--navy);
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        /* coursework */
+        .course-group {
+            margin-bottom: 10px;
+        }
+
+        .course-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .course-title {
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .course-list {
+            font-size: .76rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* lang item */
+        .lang-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .lang-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .lang-name {
+            font-size: .85rem;
+            font-weight: 500;
+        }
+
+        .lang-level {
+            font-size: .74rem;
+            color: var(--muted);
+        }
+
+        .lang-dots {
+            display: flex;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        .dot.on {
+            background: var(--teal);
+        }
+
+        /* links sidebar */
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .8rem;
+            text-decoration: none;
+            color: var(--text);
+            padding: 6px 0;
+            border-bottom: 1px solid var(--warm);
+            transition: color .2s;
+        }
+
+        .link-item:last-child {
+            border-bottom: none;
+        }
+
+        .link-item:hover {
+            color: var(--teal);
+        }
+
+        .link-label {
+            font-weight: 600;
+            min-width: 70px;
+        }
+
+        /* ── PROJECTS ── */
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 22px 18px;
+            margin-bottom: 16px;
+            transition: box-shadow .25s, transform .25s;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 28px rgba(13, 27, 42, .08);
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .project-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .project-meta {
+            flex: 1;
+        }
+
+        .project-name {
+            font-weight: 700;
+            font-size: .97rem;
+            color: var(--navy);
+        }
+
+        .project-role {
+            font-size: .75rem;
+            color: var(--teal);
+            font-weight: 600;
+            letter-spacing: .3px;
+            margin-top: 2px;
+        }
+
+        .project-year {
+            font-size: .72rem;
+            color: var(--muted);
+            background: var(--warm);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .project-desc {
+            font-size: .83rem;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 12px;
+            font-weight: 300;
+        }
+
+        .project-points {
+            list-style: none;
+        }
+
+        .project-points li {
+            position: relative;
+            padding-left: 16px;
+            font-size: .82rem;
+            line-height: 1.65;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .project-points li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .result-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: .73rem;
+            font-weight: 600;
+            color: #1a7870;
+            background: rgba(46, 196, 182, .1);
+            border: 1px solid rgba(46, 196, 182, .3);
+            padding: 3px 12px;
+            border-radius: 20px;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-decoration: none;
+            border: 1.5px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            transition: all .2s;
+        }
+
+        .github-link:hover {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        /* strengths/weaknesses */
+        .sw-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .sw-item {
+            border-radius: 12px;
+            padding: 16px 18px;
+        }
+
+        .sw-item.str {
+            background: rgba(46, 196, 182, .08);
+            border: 1px solid rgba(46, 196, 182, .25);
+        }
+
+        .sw-item.wk {
+            background: rgba(255, 180, 70, .07);
+            border: 1px solid rgba(255, 180, 70, .25);
+        }
+
+        .sw-label {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .sw-item.str .sw-label {
+            color: #1a7870;
+        }
+
+        .sw-item.wk .sw-label {
+            color: #a07020;
+        }
+
+        .sw-text {
+            font-size: .8rem;
+            line-height: 1.65;
+            color: var(--text);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            animation: fadeUp .55s ease both;
+        }
+
+        .body-grid {
+            animation: fadeUp .55s .12s ease both;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .body-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+
+            .hero-contacts {
+                justify-content: center;
+            }
+
+            .sw-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Language Switcher --> 
-    <div class="language-switcher">
-        <button id="en-btn" onclick="changeLanguage('en')">English</button>
-        <button id="vi-btn" onclick="changeLanguage('vi')" class="active">Tiếng Việt</button>
+
+    <!-- Language bar -->
+    <div class="lang-bar">
+        <button id="btn-vi" class="active" onclick="setLang('vi')">Tiếng Việt</button>
+        <button id="btn-en" onclick="setLang('en')">English</button>
     </div>
 
-    <div class="cv-container">
-        <!-- Left Sidebar -->
-        <aside class="sidebar">
-            <!-- Profile Photo -->
-            <div class="profile-photo-container">
-                <img src="assets/img/image.png" alt="Phan Huỳnh Văn Đô" class="profile-photo">
+    <div class="page">
+
+        <!-- ── HERO ── -->
+        <header class="hero">
+            <div class="avatar-wrap">
+                <div class="avatar-placeholder">Đô</div>
             </div>
-            
-            <!-- Contact Info -->
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span><a href="tel:0352820680" class="phone-link">0352820680</a></span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span><a href="mailto:phanhuynhvando@gmail.com" class="email-link">phanhuynhvando@gmail.com</a></span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span class="lang" data-vi="<a href='https://maps.google.com/?q=758/24, Xo Viet Nghe Tinh Street, Ward 25, Binh Thanh District, Ho Chi Minh City' target='_blank' class='address-link'>758/24, Xo Viet Nghe Tinh Street, Ward 25, Binh Thanh District, Ho Chi Minh City</a>" data-en="<a href='https://maps.google.com/?q=758/24, Xo Viet Nghe Tinh Street, Ward 25, Binh Thanh District, Ho Chi Minh City' target='_blank' class='address-link'>758/24, Xo Viet Nghe Tinh Street, Ward 25, Binh Thanh District, Ho Chi Minh City</a>"><a href='https://maps.google.com/?q=758/24, Xo Viet Nghe Tinh Street, Ward 25, Binh Thanh District, Ho Chi Minh City' target='_blank' class='address-link'>758/24, Xo Viet Nghe Tinh Street, Ward 25, Binh Thanh District, Ho Chi Minh City</a></span>
+            <div class="hero-text">
+                <div class="hero-name">Phan Huỳnh Văn Đô</div>
+                <div class="hero-title" data-vi="Thực Tập Sinh IoT &amp; Trí Tuệ Nhân Tạo"
+                    data-en="IoT &amp; AI Intern / R&amp;D Engineer">Thực Tập Sinh IoT &amp; Trí Tuệ Nhân Tạo</div>
+                <div class="hero-contacts">
+                    <a href="tel:+84352820680">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        +84 352 820 680
+                    </a>
+                    <a href="mailto:phanhuynhvando@gmail.com">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                        phanhuynhvando@gmail.com
+                    </a>
+                    <a href="https://github.com/minhtenlado" target="_blank">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        github.com/minhtenlado
+                    </a>
+                    <a href="https://www.linkedin.com/in/văn-đô" target="_blank">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2">
+                            <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <span data-vi="Mỹ Thạnh Tây, TP.HCM" data-en="My Thanh Tay, Ho Chi Minh City">Mỹ Thạnh Tây,
+                            TP.HCM</span>
+                    </a>
                 </div>
             </div>
-            
-            <!-- Education -->
-            <div class="sidebar-section">
-                <h2 class="lang" data-vi="GIÁO DỤC" data-en="EDUCATION">GIÁO DỤC</h2>
-                <div class="education-item">
-                    <h3 class="lang" data-vi="Kỹ Thuật Điện Tử" data-en="Electronic Engineering">Kỹ Thuật Điện Tử</h3>
-                    <p class="lang" data-vi="chuyên ngành IOT và trí tuệ nhân tạo" data-en="specializing in IOT and artificial intelligence">chuyên ngành IOT và trí tuệ nhân tạo</p>
-                    <p class="institution lang" data-vi="Đại học Công nghiệp TP.HCM" data-en="Industrial University of Ho Chi Minh City">Đại học Công nghiệp TP.HCM</p>
-                    <p class="year">2022 - 2026</p>
-                </div>
-            </div>
-            
-            <!-- Skills -->
-            <div class="sidebar-section">
-                <h2 class="lang" data-vi="KỸ NĂNG" data-en="SKILLS">KỸ NĂNG</h2>
-                <ul class="skills-list">
-                    <li>
-                        <span class="skill-category lang" data-vi="Ngôn ngữ lập trình:" data-en="Programming Languages:">Ngôn ngữ lập trình:</span> Python, C/C++, MATLAB
-                    </li>
-                    <li>
-                        <span class="skill-category lang" data-vi="Framework AI/ML:" data-en="AI/ML Frameworks:">Framework AI/ML:</span> Yolo, TensorFlow, PyTorch, Scikit-learn
-                    </li>
-                    <li>
-                        <span class="skill-category lang" data-vi="Hệ thống nhúng:" data-en="Embedded Systems:">Hệ thống nhúng:</span> Arduino, Raspberry Pi, STM32, ESP32
-                    </li>
-                    <li>
-                        <span class="skill-category lang" data-vi="Kỹ năng mềm:" data-en="Soft Skills:">Kỹ năng mềm:</span> <span class="lang" data-vi="Giải quyết vấn đề, làm việc nhóm, quản lý dự án" data-en="Problem-solving, teamwork, project management">Giải quyết vấn đề, làm việc nhóm, quản lý dự án</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Language -->
-            <div class="sidebar-section">
-                <h2 class="lang" data-vi="NGÔN NGỮ" data-en="LANGUAGE">NGÔN NGỮ</h2>
-                <p class="lang" data-vi="Tiếng Anh" data-en="English">Tiếng Anh</p>
-            </div>
-        </aside>
-        
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Header with Name and Title -->
-            <header class="cv-header">
-                <h1 class="lang" data-vi="PHAN HUỲNH VĂN ĐÔ" data-en="PHAN HUYNH VAN DO">PHAN HUỲNH VĂN ĐÔ</h1>
-                <p class="profession lang" data-vi="Internet vạn vật & Trí tuệ nhân tạo" data-en="IOT & Artificial Intelligence">Internet vạn vật & Trí tuệ nhân tạo</p>
-            </header>
-            
-            <!-- About Me -->
-            <section class="main-section">
-                <h2 class="lang" data-vi="Giới Thiệu" data-en="About Me">Giới Thiệu</h2>
-                <p class="lang" data-vi="Tôi là sinh viên năm ba ngành Kỹ thuật Điện tử với định hướng về Internet of Things (IoT) và Trí tuệ nhân tạo (AI). Có kỹ năng lập trình hệ thống nhúng sử dụng Python, C/C++, và các nền tảng như Arduino, ESP32, STM32 và Raspberry Pi. Đam mê khơi dậy niềm đam mê lập trình, tôi khát khao dạy lập trình cho người mới bắt đầu và những người đam mê, giúp họ khám phá niềm vui sáng tạo thông qua mã lệnh. Với vai trò Giảng viên Lập trình." 
-                   data-en="I am a third-year Electronics Engineering student with a focus on Internet of Things (IoT) and Artificial Intelligence (AI). Skilled in programming embedded systems using Python, C/C++, and platforms like Arduino, ESP32, STM32 and Raspberry Pi. Passionate about igniting enthusiasm for coding, I aspire to teach programming to beginners and enthusiasts, helping them discover the joy of creating through code. As a Programming Instructor.">Tôi là sinh viên năm ba ngành Kỹ thuật Điện tử với định hướng về Internet of Things (IoT) và Trí tuệ nhân tạo (AI). Có kỹ năng lập trình hệ thống nhúng sử dụng Python, C/C++, và các nền tảng như Arduino, ESP32, STM32 và Raspberry Pi. Đam mê khơi dậy niềm đam mê lập trình, tôi khát khao dạy lập trình cho người mới bắt đầu và những người đam mê, giúp họ khám phá niềm vui sáng tạo thông qua mã lệnh. Với vai trò Giảng viên Lập trình.</p>
-            </section>
-            
-            <!-- Work Experience -->
-            <section class="main-section">
-                <h2 class="lang" data-vi="KINH NGHIỆM LÀM VIỆC" data-en="WORK EXPERIENCE">KINH NGHIỆM LÀM VIỆC</h2>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <h3>Python:</h3>
-                        <p class="lang" data-vi="Thành thạo trong việc phát triển và huấn luyện mạng nơ-ron nhân tạo sử dụng các framework như TensorFlow và PyTorch, với kinh nghiệm trong các dự án như đào tạo MLP cho mô hình dự đoán và phân tích dữ liệu." 
-                           data-en="Proficient in developing and training artificial neural networks using frameworks like TensorFlow and PyTorch, with experience in projects such as MLP training for predictive modeling and data analysis.">Thành thạo trong việc phát triển và huấn luyện mạng nơ-ron nhân tạo sử dụng các framework như TensorFlow và PyTorch, với kinh nghiệm trong các dự án như đào tạo MLP cho mô hình dự đoán và phân tích dữ liệu.</p>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <h3>C/C++:</h3>
-                        <p class="lang" data-vi="Có kỹ năng lập trình vi điều khiển (ví dụ: Arduino, Raspberry Pi, ESP32, STM32) cho các hệ thống nhúng, bao gồm các ứng dụng điều khiển thời gian thực và tích hợp thiết bị IoT." 
-                           data-en="Skilled in programming microcontrollers (e.g., Arduino, Raspberry Pi, ESP32, STM32) for embedded systems, including real-time control applications and IoT device integration.">Có kỹ năng lập trình vi điều khiển (ví dụ: Arduino, ESP32, STM32) cho các hệ thống nhúng, bao gồm các ứng dụng điều khiển thời gian thực và tích hợp thiết bị IoT.</p>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <h3>Linux:</h3>
-                        <p class="lang" data-vi="Có kinh nghiệm sử dụng môi trường Linux để phát triển, bao gồm lập trình shell, biên dịch mã với toolchain (ví dụ: arm-linux-gcc), và quản lý driver thiết bị cho giao diện phần cứng như /dev/leds và /dev/buttons." 
-                           data-en="Experienced in using Linux environments for development, including shell scripting, compiling code with toolchains (e.g., arm-linux-gcc), and managing device drivers for hardware interfaces like /dev/leds and /dev/buttons.">Có kinh nghiệm sử dụng môi trường Linux để phát triển, bao gồm lập trình shell, biên dịch mã với toolchain (ví dụ: arm-linux-gcc), và quản lý driver thiết bị cho giao diện phần cứng như /dev/leds và /dev/buttons.</p>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <h3 class="lang" data-vi="Công nghệ IoT:" data-en="IoT Technologies:">Công nghệ IoT:</h3>
-                        <p class="lang" data-vi="Quen thuộc với các giao thức MQTT, I2C và UART cho tích hợp cảm biến và truyền thông trong các dự án IoT." 
-                           data-en="Familiar with MQTT, I2C, and UART protocols for sensor integration and communication in IoT projects.">Quen thuộc với các giao thức MQTT, I2C và UART cho tích hợp cảm biến và truyền thông trong các dự án IoT.</p>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <h3 class="lang" data-vi="Công cụ:" data-en="Tools:">Công cụ:</h3>
-                        <p>MATLAB, Proteus, Git, MicroPython, ROS, Cmake.</p>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <h3 class="lang" data-vi="Kỹ năng mềm:" data-en="Soft Skills:">Kỹ năng mềm:</h3>
-                        <p class="lang" data-vi="Giải quyết vấn đề, giao tiếp rõ ràng, và hướng dẫn người mới bắt đầu học các khái niệm lập trình." 
-                           data-en="Problem-solving, clear communication, and mentoring beginners in programming concepts.">Giải quyết vấn đề, giao tiếp rõ ràng, và hướng dẫn người mới bắt đầu học các khái niệm lập trình.</p>
+        </header>
+
+        <!-- ── BODY ── -->
+        <div class="body-grid">
+
+            <!-- LEFT SIDEBAR -->
+            <aside>
+
+                <!-- Education -->
+                <div class="card">
+                    <div class="section-label" data-vi="Học Vấn" data-en="Education">Học Vấn</div>
+                    <div class="edu-school" data-vi="ĐH Công nghiệp TP.HCM (IUH)"
+                        data-en="Industrial University of HCMC (IUH)">ĐH Công nghiệp TP.HCM (IUH)</div>
+                    <div class="edu-major" data-vi="IoT &amp; Trí tuệ nhân tạo ứng dụng"
+                        data-en="Applied IoT &amp; Artificial Intelligence">IoT &amp; Trí tuệ nhân tạo ứng dụng</div>
+                    <div class="edu-year">2022 – 2027</div>
+
+                    <div style="margin-top:18px;">
+                        <div class="section-label" style="font-size:.62rem;" data-vi="Môn học tiêu biểu"
+                            data-en="Key Coursework">Môn học tiêu biểu</div>
+                        <div class="course-group">
+                            <div class="course-title" data-vi="Lập trình &amp; Giải thuật"
+                                data-en="Programming &amp; Algorithms">Lập trình &amp; Giải thuật</div>
+                            <div class="course-list" data-vi="Cấu trúc dữ liệu, CSDL, Python"
+                                data-en="Data Structures, Databases, Python">Cấu trúc dữ liệu, CSDL, Python</div>
+                        </div>
+                        <div class="course-group">
+                            <div class="course-title" data-vi="Hệ thống nhúng &amp; IoT"
+                                data-en="Embedded Systems &amp; IoT">Hệ thống nhúng &amp; IoT</div>
+                            <div class="course-list" data-vi="Vi điều khiển, Cảm biến, Mạng IoT"
+                                data-en="Microcontrollers, Sensors, IoT Networks">Vi điều khiển, Cảm biến, Mạng IoT
+                            </div>
+                        </div>
+                        <div class="course-group">
+                            <div class="course-title" data-vi="AI &amp; Xử lý dữ liệu"
+                                data-en="AI &amp; Data Processing">AI &amp; Xử lý dữ liệu</div>
+                            <div class="course-list" data-vi="Computer Vision, Machine Learning, Neural Networks"
+                                data-en="Computer Vision, Machine Learning, Neural Networks">Computer Vision, ML, Mạng
+                                nơ-ron</div>
+                        </div>
                     </div>
                 </div>
-            </section>
-            
-            <!-- Contact Information -->
-            <section class="main-section">
-                <h2 class="lang" data-vi="THÔNG TIN LIÊN HỆ" data-en="CONTACT INFORMATION">THÔNG TIN LIÊN HỆ</h2>
-                <div class="social-links">
-                    <div class="social-link">
-                        <span class="platform">GitHub:</span>
-                        <a href="https://github.com/minhtenlado" target="_blank">https://github.com/minhtenlado</a>
+
+                <!-- Skills -->
+                <div class="card">
+                    <div class="section-label" data-vi="Kỹ Năng Chuyên Môn" data-en="Technical Skills">Kỹ Năng Chuyên
+                        Môn</div>
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-vi="Lập trình" data-en="Programming">Lập trình</div>
+                        <div class="tags">
+                            <span class="tag accent">Python</span>
+                            <span class="tag accent">C/C++</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">MicroPython</span>
+                        </div>
                     </div>
-                    <div class="social-link">
-                        <span class="platform">Facebook:</span>
-                        <a href="https://www.facebook.com/04.invisible.IT" target="_blank">https://www.facebook.com/04.invisible.IT</a>
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-vi="AI &amp; Computer Vision"
+                            data-en="AI &amp; Computer Vision">AI &amp; Computer Vision</div>
+                        <div class="tags">
+                            <span class="tag accent">YOLO</span>
+                            <span class="tag accent">OpenCV</span>
+                            <span class="tag">FaceNet</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">KNN</span>
+                        </div>
                     </div>
-                    <div class="social-link">
-                        <span class="platform">Youtube:</span>
-                        <a href="https://www.youtube.com/@PhanhuynhVano" target="_blank">https://www.youtube.com/@PhanhuynhVano</a>
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-vi="Hệ thống nhúng &amp; IoT" data-en="Embedded &amp; IoT">
+                            Hệ thống nhúng &amp; IoT</div>
+                        <div class="tags">
+                            <span class="tag accent">ESP32</span>
+                            <span class="tag accent">Raspberry Pi</span>
+                            <span class="tag">STM32</span>
+                            <span class="tag">Arduino</span>
+                            <span class="tag">UART</span>
+                            <span class="tag">I2C</span>
+                            <span class="tag">SPI</span>
+                            <span class="tag">MQTT</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-vi="Công cụ &amp; Nền tảng" data-en="Tools &amp; Platforms">
+                            Công cụ &amp; Nền tảng</div>
+                        <div class="tags">
+                            <span class="tag">Linux/Ubuntu</span>
+                            <span class="tag">Git/GitHub</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">MATLAB</span>
+                            <span class="tag">Proteus</span>
+                            <span class="tag">KiCad</span>
+                            <span class="tag">Altium</span>
+                            <span class="tag">ROS</span>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </main>
+
+                <!-- Language -->
+                <div class="card">
+                    <div class="section-label" data-vi="Ngôn Ngữ" data-en="Languages">Ngôn Ngữ</div>
+                    <div class="lang-item">
+                        <span class="lang-name" data-vi="Tiếng Việt" data-en="Vietnamese">Tiếng Việt</span>
+                        <span class="lang-level" data-vi="Bản ngữ" data-en="Native">Bản ngữ</span>
+                        <div class="lang-dots">
+                            <div class="dot on"></div>
+                            <div class="dot on"></div>
+                            <div class="dot on"></div>
+                            <div class="dot on"></div>
+                            <div class="dot on"></div>
+                        </div>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name" data-vi="Tiếng Anh" data-en="English">Tiếng Anh</span>
+                        <span class="lang-level" data-vi="Đang phát triển" data-en="Developing">Đang phát triển</span>
+                        <div class="lang-dots">
+                            <div class="dot on"></div>
+                            <div class="dot on"></div>
+                            <div class="dot on"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="card">
+                    <div class="section-label" data-vi="Liên Kết" data-en="Links">Liên Kết</div>
+                    <a class="link-item" href="https://github.com/minhtenlado" target="_blank">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        <span class="link-label">GitHub</span>
+                        <span style="color:var(--muted);font-size:.75rem;">minhtenlado</span>
+                    </a>
+                    <a class="link-item" href="https://www.linkedin.com/in/văn-đô" target="_blank">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+                        </svg>
+                        <span class="link-label">LinkedIn</span>
+                        <span style="color:var(--muted);font-size:.75rem;">văn-đô</span>
+                    </a>
+                    <a class="link-item" href="https://www.facebook.com/04.invisible.IT" target="_blank">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z" />
+                        </svg>
+                        <span class="link-label">Facebook</span>
+                        <span style="color:var(--muted);font-size:.75rem;">04.invisible.IT</span>
+                    </a>
+                    <a class="link-item" href="https://www.youtube.com/@PhanhuynhVano" target="_blank">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.55 3.5 12 3.5 12 3.5s-7.55 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.45 20.5 12 20.5 12 20.5s7.55 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z" />
+                        </svg>
+                        <span class="link-label">YouTube</span>
+                        <span style="color:var(--muted);font-size:.75rem;">@PhanhuynhVano</span>
+                    </a>
+                </div>
+
+            </aside>
+
+            <!-- RIGHT MAIN -->
+            <main>
+
+                <!-- Profile -->
+                <div class="card">
+                    <div class="section-label" data-vi="Giới Thiệu" data-en="Profile">Giới Thiệu</div>
+                    <p class="profile-text"
+                        data-vi="Sinh viên năm 4 chuyên ngành IoT &amp; Trí tuệ nhân tạo ứng dụng, có tư duy logic và đam mê nghiên cứu phát triển hệ thống thông minh tích hợp AI, Computer Vision và hệ thống nhúng. Có kinh nghiệm thực tế qua các dự án như bãi đỗ xe thông minh và nhận diện khuôn mặt. Mong muốn trở thành kỹ sư R&amp;D đa năng, đóng góp trực tiếp vào chuỗi giá trị giải pháp thông minh của doanh nghiệp."
+                        data-en="A fourth-year student majoring in Applied IoT and Artificial Intelligence with strong logical thinking and hands-on experience integrating AI, Computer Vision, and Embedded Systems. Experienced through real-world academic projects including a Smart Parking System and Face Recognition System. Aspiring to become a versatile R&amp;D Engineer, contributing directly to the intelligent solution value chain of the company.">
+                        Sinh viên năm 4 chuyên ngành IoT &amp; Trí tuệ nhân tạo ứng dụng, có tư duy logic và đam mê
+                        nghiên cứu phát triển hệ thống thông minh tích hợp AI, Computer Vision và hệ thống nhúng. Có
+                        kinh nghiệm thực tế qua các dự án như bãi đỗ xe thông minh và nhận diện khuôn mặt. Mong muốn trở
+                        thành kỹ sư R&amp;D đa năng, đóng góp trực tiếp vào chuỗi giá trị giải pháp thông minh của doanh
+                        nghiệp.
+                    </p>
+                </div>
+
+                <!-- Projects -->
+                <div class="card">
+                    <div class="section-label" data-vi="Dự Án Tiêu Biểu" data-en="Featured Projects">Dự Án Tiêu Biểu
+                    </div>
+
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ec4b6"
+                                    stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                                    <line x1="12" y1="12" x2="12" y2="16" />
+                                    <line x1="10" y1="14" x2="14" y2="14" />
+                                </svg>
+                            </div>
+                            <div class="project-meta">
+                                <div class="project-name" data-vi="Bãi Đỗ Xe Thông Minh (IoT &amp; Edge AI)"
+                                    data-en="Smart Parking System (IoT &amp; Edge AI)">Bãi Đỗ Xe Thông Minh (IoT &amp;
+                                    Edge AI)</div>
+                                <div class="project-role" data-vi="Team Leader &amp; Core Developer"
+                                    data-en="Team Leader &amp; Core Developer">Team Leader &amp; Core Developer</div>
+                            </div>
+                            <div class="project-year">2024 – 2025</div>
+                        </div>
+                        <p class="project-desc"
+                            data-vi="Hệ thống quản lý bãi xe tự động tích hợp điều khiển phần cứng, nhận diện biển số bằng AI và nền tảng giám sát thời gian thực."
+                            data-en="A fully automated parking management system integrating hardware device control, AI-powered license plate recognition, and a real-time monitoring platform.">
+                            Hệ thống quản lý bãi xe tự động tích hợp điều khiển phần cứng, nhận diện biển số bằng AI và
+                            nền tảng giám sát thời gian thực.
+                        </p>
+                        <ul class="project-points">
+                            <li data-vi="Viết firmware C/C++ cho ESP32 điều khiển barrier và đồng bộ dữ liệu cảm biến."
+                                data-en="Developed C/C++ firmware for ESP32 to control barrier gate and synchronize sensor data.">
+                                Viết firmware C/C++ cho ESP32 điều khiển barrier và đồng bộ dữ liệu cảm biến.</li>
+                            <li data-vi="Triển khai mô hình YOLO v8 + OpenCV nhận diện biển số xe (LPR) trên Raspberry Pi 5."
+                                data-en="Deployed YOLO v8 + OpenCV license plate recognition (LPR) model on Raspberry Pi 5.">
+                                Triển khai mô hình YOLO v8 + OpenCV nhận diện biển số xe (LPR) trên Raspberry Pi 5.</li>
+                            <li data-vi="Xây dựng luồng dữ liệu lên Firebase; phát triển Web Admin portal và Android App."
+                                data-en="Built data pipeline to Firebase; developed Web Admin portal and Android App.">
+                                Xây dựng luồng dữ liệu lên Firebase; phát triển Web Admin portal và Android App.</li>
+                        </ul>
+                        <div class="project-footer">
+                            <div class="result-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <span data-vi="Đạt điểm A — vận hành ổn định, độ chính xác cao"
+                                    data-en="Grade A — high stability &amp; accuracy">Đạt điểm A — vận hành ổn định, độ
+                                    chính xác cao</span>
+                            </div>
+                            <a class="github-link" href="https://github.com/minhtenlado" target="_blank">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z" />
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ec4b6"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="8" r="4" />
+                                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                                </svg>
+                            </div>
+                            <div class="project-meta">
+                                <div class="project-name" data-vi="Hệ Thống Nhận Diện Khuôn Mặt"
+                                    data-en="Face Recognition System">Hệ Thống Nhận Diện Khuôn Mặt</div>
+                                <div class="project-role" data-vi="Developer" data-en="Developer">Developer</div>
+                            </div>
+                            <div class="project-year">2025</div>
+                        </div>
+                        <p class="project-desc"
+                            data-vi="Hệ thống nhận diện khuôn mặt thời gian thực từ webcam sử dụng FaceNet embedding và KNN phân loại, hỗ trợ huấn luyện lại linh hoạt khi bổ sung dữ liệu mới."
+                            data-en="Real-time face recognition system via webcam using FaceNet for embedding extraction and KNN classification, with flexible retraining support when adding new data.">
+                            Hệ thống nhận diện khuôn mặt thời gian thực từ webcam sử dụng FaceNet embedding và KNN phân
+                            loại, hỗ trợ huấn luyện lại linh hoạt khi bổ sung dữ liệu mới.
+                        </p>
+                        <ul class="project-points">
+                            <li data-vi="Xây dựng pipeline nhận diện thời gian thực từ webcam bằng Python &amp; OpenCV."
+                                data-en="Built a real-time recognition pipeline from webcam using Python &amp; OpenCV.">
+                                Xây dựng pipeline nhận diện thời gian thực từ webcam bằng Python &amp; OpenCV.</li>
+                            <li data-vi="Sử dụng FaceNet để trích xuất embedding và KNN để phân loại người dùng."
+                                data-en="Used FaceNet for embedding extraction and KNN for user classification.">Sử dụng
+                                FaceNet để trích xuất embedding và KNN để phân loại người dùng.</li>
+                            <li data-vi="Hỗ trợ huấn luyện lại linh hoạt khi bổ sung dữ liệu người dùng mới."
+                                data-en="Supports flexible retraining when new user data is added.">Hỗ trợ huấn luyện
+                                lại linh hoạt khi bổ sung dữ liệu người dùng mới.</li>
+                        </ul>
+                        <div class="project-footer">
+                            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                                <span class="tag accent">FaceNet</span>
+                                <span class="tag accent">KNN</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">OpenCV</span>
+                            </div>
+                            <a class="github-link" href="https://github.com/minhtenlado" target="_blank">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z" />
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ec4b6"
+                                    stroke-width="2">
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <path d="M7 9h3M7 12h2M7 15h5" />
+                                    <path d="M14 9l1.5 3L17 9" />
+                                    <circle cx="17" cy="14" r="2" />
+                                </svg>
+                            </div>
+                            <div class="project-meta">
+                                <div class="project-name" data-vi="Huấn Luyện Mô Hình OCR Biển Số Xe"
+                                    data-en="License Plate OCR Model Training">Huấn Luyện Mô Hình OCR Biển Số Xe</div>
+                                <div class="project-role" data-vi="Developer" data-en="Developer">Developer</div>
+                            </div>
+                            <div class="project-year">2024 – 2025</div>
+                        </div>
+                        <p class="project-desc"
+                            data-vi="Xây dựng và huấn luyện mô hình OCR chuyên biệt để nhận dạng ký tự biển số xe Việt Nam, phục vụ cho hệ thống LPR trong đồ án bãi đỗ xe thông minh."
+                            data-en="Built and trained a specialized OCR model for Vietnamese license plate character recognition, powering the LPR pipeline in the Smart Parking System project.">
+                            Xây dựng và huấn luyện mô hình OCR chuyên biệt để nhận dạng ký tự biển số xe Việt Nam, phục
+                            vụ cho hệ thống LPR trong đồ án bãi đỗ xe thông minh.
+                        </p>
+                        <ul class="project-points">
+                            <li data-vi="Thu thập và tiền xử lý tập dữ liệu ký tự biển số xe Việt Nam phục vụ huấn luyện."
+                                data-en="Collected and preprocessed Vietnamese license plate character datasets for training.">
+                                Thu thập và tiền xử lý tập dữ liệu ký tự biển số xe Việt Nam phục vụ huấn luyện.</li>
+                            <li data-vi="Huấn luyện mô hình OCR với Python, tối ưu độ chính xác nhận dạng trên ảnh thực tế."
+                                data-en="Trained the OCR model with Python, optimizing recognition accuracy on real-world images.">
+                                Huấn luyện mô hình OCR với Python, tối ưu độ chính xác nhận dạng trên ảnh thực tế.</li>
+                            <li data-vi="Tích hợp mô hình vào pipeline LPR kết hợp với YOLO v8 trên Raspberry Pi 5."
+                                data-en="Integrated the model into the LPR pipeline combined with YOLO v8 on Raspberry Pi 5.">
+                                Tích hợp mô hình vào pipeline LPR kết hợp với YOLO v8 trên Raspberry Pi 5.</li>
+                        </ul>
+                        <div class="project-footer">
+                            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                                <span class="tag accent">OCR</span>
+                                <span class="tag accent">Deep Learning</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">OpenCV</span>
+                                <span class="tag">Raspberry Pi</span>
+                            </div>
+                            <a class="github-link" href="https://github.com/minhtenlado/train_ocr" target="_blank">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z" />
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Strengths / Weaknesses -->
+                <div class="card">
+                    <div class="section-label" data-vi="Điểm Mạnh &amp; Điểm Yếu" data-en="Strengths &amp; Weaknesses">
+                        Điểm Mạnh &amp; Điểm Yếu</div>
+                    <div class="sw-grid">
+                        <div class="sw-item str">
+                            <div class="sw-label" data-vi="Điểm Mạnh" data-en="Strengths">Điểm Mạnh</div>
+                            <div class="sw-text"
+                                data-vi="Kỹ năng lãnh đạo nhóm, tư duy giải quyết vấn đề kỹ thuật phức tạp, khả năng tự học công nghệ mới và tiếp thu nhanh."
+                                data-en="Team leadership, complex technical problem-solving, self-learning ability and fast adoption of new technologies.">
+                                Kỹ năng lãnh đạo nhóm, tư duy giải quyết vấn đề kỹ thuật phức tạp, khả năng tự học công
+                                nghệ mới và tiếp thu nhanh.
+                            </div>
+                        </div>
+                        <div class="sw-item wk">
+                            <div class="sw-label" data-vi="Điểm Yếu" data-en="Weakness">Điểm Yếu</div>
+                            <div class="sw-text"
+                                data-vi="Đang tích cực rèn luyện kỹ năng tiếng Anh chuyên ngành để làm việc hiệu quả trong môi trường quốc tế."
+                                data-en="Actively developing technical English proficiency to perform effectively in international work environments.">
+                                Đang tích cực rèn luyện kỹ năng tiếng Anh chuyên ngành để làm việc hiệu quả trong môi
+                                trường quốc tế.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
     </div>
 
     <script>
-
-        let currentLanguage = 'vi';
-
-
-        function changeLanguage(language) {
-   
-            currentLanguage = language;
-            
-
-            document.getElementById('en-btn').classList.toggle('active', language === 'en');
-            document.getElementById('vi-btn').classList.toggle('active', language === 'vi');
-            
-
-            const elements = document.querySelectorAll('.lang');
-            
-
-            elements.forEach(element => {
-                const text = element.getAttribute(`data-${language}`);
-                if (text) {
-                    // Kiểm tra xem nội dung có chứa HTML không
-                    if (text.includes('<') && text.includes('>')) {
-                        element.innerHTML = text;
-                    } else {
-                        element.textContent = text;
-                    }
-                }
+        function setLang(lang) {
+            document.querySelectorAll('[data-vi]').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang) || el.innerHTML;
             });
+            document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-
-            changeLanguage('vi');
-            
-
-            const sidebarSections = document.querySelectorAll('.sidebar-section');
-            const mainSections = document.querySelectorAll('.main-section');
-            const experienceItems = document.querySelectorAll('.experience-item');
-            const socialLinks = document.querySelectorAll('.social-link');
-            
-
-            function animateElements(elements, delay = 0.1, baseDelay = 0.1) {
-                elements.forEach((element, index) => {
-                    element.style.opacity = '0';
-                    element.style.animation = 'none';
-                    setTimeout(() => {
-                        element.style.animation = `fadeInUp 0.5s ease-out forwards`;
-                        element.style.animationDelay = `${baseDelay + index * delay}s`;
-                        element.style.opacity = '1';
-                    }, 50);
-                });
-            }
-            
-
-            setTimeout(() => animateElements(sidebarSections, 0.15, 0.1), 300);
-            setTimeout(() => animateElements(mainSections, 0.2, 0.3), 400);
-            setTimeout(() => animateElements(experienceItems, 0.1, 0.5), 600);
-            setTimeout(() => animateElements(socialLinks, 0.1, 0.7), 800);
-        });
-
-
-        document.addEventListener('mouseover', function(e) {
-
-            const experienceItem = e.target.closest('.experience-item');
-            const sidebarSection = e.target.closest('.sidebar-section');
-            const contactItem = e.target.closest('.contact-item');
-            
-
-            if (experienceItem) {
-                const siblings = Array.from(experienceItem.parentNode.children)
-                    .filter(item => item !== experienceItem && item.classList.contains('experience-item'));
-                siblings.forEach(item => {
-                    item.style.opacity = '0.7';
-                    item.style.transform = 'scale(0.98)';
-                });
-            }
-            
-
-            document.addEventListener('mouseout', function(e) {
-                const experienceItems = document.querySelectorAll('.experience-item');
-                experienceItems.forEach(item => {
-                    item.style.opacity = '';
-                    item.style.transform = '';
-                });
-            });
+        // init
+        document.querySelectorAll('[data-vi]').forEach(el => {
+            if (!el.innerHTML.trim()) el.innerHTML = el.getAttribute('data-vi');
         });
     </script>
 </body>
+
 </html>
